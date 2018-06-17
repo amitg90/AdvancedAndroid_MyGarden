@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.util.Log;
 
 import com.example.android.mygarden.provider.PlantContract;
 import com.example.android.mygarden.utils.PlantUtils;
@@ -71,6 +72,7 @@ public class PlantWateringService extends IntentService {
      * @see IntentService
      */
     public static void startActionUpdatePlantWidgets(Context context) {
+        Log.e("Amit", "!!!startActionUpdatePlantWidgets Called");
         Intent intent = new Intent(context, PlantWateringService.class);
         intent.setAction(ACTION_UPDATE_PLANT_WIDGETS);
         context.startService(intent);
@@ -81,11 +83,13 @@ public class PlantWateringService extends IntentService {
      */
     @Override
     protected void onHandleIntent(Intent intent) {
+        Log.e("Amit", "!!!onHandleIntent Called");
         if (intent != null) {
             final String action = intent.getAction();
             if (ACTION_WATER_PLANT.equals(action)) {
                 final long plantId = intent.getLongExtra(EXTRA_PLANT_ID,
                         PlantContract.INVALID_PLANT_ID);
+                Log.e("Amit", "!!!Handle Plant ID:" + plantId);
                 handleActionWaterPlants(plantId);
             } else if (ACTION_UPDATE_PLANT_WIDGETS.equals(action)) {
                 handleActionUpdatePlantWidgets();
