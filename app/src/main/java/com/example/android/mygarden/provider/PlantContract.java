@@ -30,6 +30,7 @@ public class PlantContract {
     // Define the possible paths for accessing data in this contract
     // This is the path for the "plants" directory
     public static final String PATH_PLANTS = "plants";
+    public static final String PATH_PLANT = "plant";
 
     public static final long INVALID_PLANT_ID = -1;
 
